@@ -42,10 +42,21 @@ function checkAnswer() {
 minInput.addEventListener('change', setRange);
 maxInput.addEventListener('change', setRange);
 submitBtn.addEventListener('click', checkAnswer);
-answerInput.addEventListener('keydown', (event) => {
-  if (event.keyCode === 13) {
-    checkAnswer();
+answerInput.addEventListener('input', (event) => {
+  const inputVal = parseInt(event.target.value);
+  const questionText = questionDiv.innerText;
+  const num1 = parseInt(questionText.substring(0, questionText.indexOf("x")).trim());
+  const num2 = parseInt(questionText.substring(questionText.indexOf("x")+1, questionText.indexOf("=")).trim());
+  const answer = num1 * num2;
+  if (inputVal === answer) {
+    resultDiv.innerText = 'Correct!';
+    score++;
+    scoreDiv.innerText = `Score: ${score}`;
+    generateQuestion();
+    answerInput.value = "";
+    answerInput.focus();
   }
 });
+
 
 setRange();
