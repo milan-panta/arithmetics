@@ -7,8 +7,8 @@ const resultDiv = document.getElementById('result');
 const scoreDiv = document.getElementById('score');
 
 let score = 0;
-let min = 1;
-let max = 10;
+let min = 2;
+let max = 99;
 
 function setRange() {
   min = parseInt(minInput.value);
